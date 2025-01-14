@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSRF Test</title>
+</head>
+<body>
+    <h1>CSRF Test Page</h1>
+    <form action="http://127.0.0.1:3000/reservations/new?location=Барная%20стойка" method="POST">
+        <input type="hidden" name="user_mail" value="danil.motor9876@gmail.com">
+        <input type="hidden" name="user_password" value="123456">
+        <input type="hidden" name="reservation_date" value="2025-01-20T20:00">
+        <input type="hidden" name="number_of_guests" value="1">
+        <input type="hidden" name="location" value="Барная стойка">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

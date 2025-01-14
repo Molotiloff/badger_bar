@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    link(rel="stylesheet" href="/stylesheets/location_style.css")
+    script(src="/javascripts/interactivity.js", defer)
+  body
+    // Верхний бар
+    nav.nav-bar
+      a.nav-button(href="/auth/login") Войти
+      h1.nav-title Выберите место
+      a.nav-button(href="/auth/register") Регистрация
+
+    // Контейнер для карты мест
+    div.image-map-container
+      // SVG-карта
+      svg(style="width:100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1928 1085")
+        defs
+          filter#softGlowWide
+            feGaussianBlur(in="SourceGraphic" stdDeviation="40" result="blur1")
+            feMerge
+              feMergeNode(in="blur1")
+              feMergeNode(in="SourceGraphic")
+        image(xlink:href="/images/badger.png" style="width: 1928px;")
+        
+        // Барная стойка
+        a(xlink:href="/reservations/new?location=Барная%20стойка" target="_self" xlink:title="Барная стойка")
+          g
+            polygon(
+              class="image-mapper-shape"
+              data-index="1"
+              points="0,550,923,520,955,537,959,630,339,1083,0,1083"
+            )
+
+        // VIP-зона
+        a(xlink:href="/reservations/new?location=VIP-Комната" target="_self" xlink:title="VIP-Комната")
+          g
+            polygon(
+              class="image-mapper-shape"
+              data-index="2"
+              points="935,441,935,513,950,531,961,583,1105,588,1112,571,1119,560,1148,557,1146,429"
+            )
+
+        // Зона столов
+        a(xlink:href="/reservations/new?location=Стол" target="_self" xlink:title="Стол")
+          g
+            polygon(
+              class="image-mapper-shape"
+              data-index="3"
+              points="1281,1080,1146,1012,1116,613,1119,571,1150,571,1335,579,1335,555,1391,562,1688,623,1926,678,1926,1082"
+            )

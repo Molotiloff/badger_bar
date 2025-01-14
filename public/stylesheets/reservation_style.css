@@ -1,0 +1,173 @@
+@font-face {
+  font-family: 'Ostrovsky';
+  src: url('./fonts/Ostrovsky.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Общий стиль для страницы с фоновым изображением */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Times New Roman', sans-serif; /* Используем шрифт Ostrovsky */
+  color: white;
+  background: url('/images/blurred_badger.png') no-repeat center center fixed; /* Фоновое изображение */
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Навигационная панель */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Панель на всю ширину экрана */
+  display: flex;
+  justify-content: space-between; /* Распределяем кнопки по краям */
+  align-items: center; /* Выравниваем кнопки по вертикали */
+  padding: 20px 40px; /* Отступы панели */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1.9), /* Тёмное начало */
+    rgba(0, 0, 0, 0.9), /* Среднее затемнение */
+    rgba(0, 0, 0, 0) /* Плавное исчезновение */
+  ); /* Добавляем градиент */
+  z-index: 1000; /* Поверх всех элементов */
+  box-sizing: border-box; /* Учитываем отступы в ширине */
+}
+
+/* Группа кнопок справа */
+.nav-buttons-right {
+  display: flex;
+  gap: 15px; /* Отступы между кнопками */
+}
+
+/* Кнопки в навигации */
+.nav-button {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1); /* Прозрачный фон кнопки */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Лёгкая граница */
+  border-radius: 5px; /* Закругляем края */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Анимация при наведении */
+}
+
+.nav-button:hover {
+  background-color: #dfa431; /* Золотистый фон при наведении */
+  color: black;
+  transform: scale(1.1); /* Лёгкое увеличение при наведении */
+}
+
+/* Контейнер для формы бронирования */
+.reservation-container {
+  background: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Полупрозрачная граница */
+  border-radius: 20px; /* Закругленные углы */
+  padding: 30px;
+  width: 400px; /* Ширина рамки */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); /* Тень */
+  text-align: center;
+}
+
+/* Заголовок формы */
+.reservation-container h2 {
+  font-family: 'Ostrovsky', sans-serif; /* Используем шрифт Ostrovsky */
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #FFFFFF; /* Белый текст */
+}
+
+/* Поля ввода */
+.reservation-container input,
+.reservation-container button {
+  width: calc(100% - 20px);
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+}
+
+/* Кнопка */
+.reservation-container button {
+  background-color: #dfa431; /* Фон кнопки */
+  color: black; /* Цвет текста */
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: none; /* Убираем стандартную границу */
+  margin-top: 30px; /* Расстояние сверху (от последнего поля формы) */
+  margin-bottom: 20px; /* Расстояние снизу (от нижнего края формы) */
+  padding: 10px 20px;
+  border-radius: 5px; /* Закруглённые углы */
+  width: 100%; /* Кнопка занимает всю ширину контейнера */
+}
+
+.reservation-container button:hover {
+  transform: scale(1.05); /* Лёгкое увеличение при наведении */
+}
+
+/* Контейнер для уведомлений */
+.toast-container {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+/* Уведомление */
+.toast {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  animation: fade-in-out 4s ease forwards;
+}
+
+/* Уведомление об ошибке */
+.toast.error {
+  background: rgba(255, 69, 58, 0.9); /* Красный цвет с прозрачностью */
+  color: white;
+}
+
+/* Уведомление об успехе */
+.toast.success {
+  background: rgba(50, 205, 50, 0.9); /* Зелёный цвет с прозрачностью */
+  color: white;
+}
+
+/* Анимация появления и исчезновения */
+@keyframes fade-in-out {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column; /* Располагаем кнопки в колонку */
+    align-items: flex-start; /* Выравниваем кнопки слева */
+  }
+
+  .nav-button {
+    margin-bottom: 10px; /* Отступ между кнопками */
+    width: 100%; /* Кнопки занимают всю ширину */
+  }
+}

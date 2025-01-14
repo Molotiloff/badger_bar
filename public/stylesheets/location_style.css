@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'Ostrovsky';
+  src: url('./fonts/Ostrovsky.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Общий стиль для страницы */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Times New Roman', sans-serif;
+  color: white;
+  background: url('/images/badger.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  overflow: hidden; /* Убираем скроллинг */
+  position: relative; /* Для размещения верхнего бара поверх */
+}
+
+/* Верхний бар */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Фиксированная высота */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Увеличиваем отступы для большей выразительности */
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1.9), /* Тёмное начало */
+      rgba(0, 0, 0, 0.9), /* Среднее затемнение */
+      rgba(0, 0, 0, 0) /* Плавное исчезновение */
+    ); /* Добавляем градиент */  
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Заголовок в центре бара */
+.nav-title {
+  color: white;
+  font-size: 2rem;
+  font-family: 'Ostrovsky', sans-serif;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Кнопки в навигации */
+.nav-button {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: #dfa431;
+  color: black;
+  transform: scale(1.1);
+}
+
+/* Контейнер для карты */
+.image-map-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Убираем возможность прокрутки карты */
+}
+
+/* Стили для SVG форм */
+.image-mapper-shape {
+  fill: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  stroke: rgba(255, 255, 255, 0.5); /* Светлая обводка */
+  stroke-width: 2px;
+  transition: stroke 0.3s ease, opacity 0.3s ease;
+}
+
+g:hover .image-mapper-shape {
+  stroke: #FFD700;
+  stroke-width: 4px;
+  opacity: 0.8;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto; /* Высота адаптируется под содержимое */
+  }
+
+  .nav-title {
+    font-size: 1.5rem;
+  }
+
+  .nav-button {
+    width: 100%;
+  }
+}

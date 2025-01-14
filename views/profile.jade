@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    link(rel="stylesheet" href="/stylesheets/profile_style.css")
+  body
+    nav.nav-bar
+      a.nav-button(href="/locations") Выбор места
+      div.nav-buttons-right
+        a.nav-button(href="/auth/login") Выйти
+
+    if reservations.length > 0
+      ul.reservation-list
+        each reservation in reservations
+          li
+            p Локация: #{reservation.location}
+            p Стол: #{reservation.table.table_location} (вместимость: #{reservation.table.table_capacity})
+            p Дата: #{reservation.reservation_date.toLocaleString()}
+            if reservation.end_time
+              p До: #{reservation.end_time === 'до закрытия' ? 'до закрытия' : new Date(reservation.end_time).toLocaleString()}
+            p Количество гостей: #{reservation.number_of_guests}
+    else
+      p Нет активных броней.

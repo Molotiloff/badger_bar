@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title || 'Ошибка'
+    link(rel="stylesheet" href="/stylesheets/reservation_style.css")
+  body
+    h1= title || 'Произошла ошибка'
+    p= message || 'Что-то пошло не так. Пожалуйста, попробуйте снова позже.'
+    a(href="/") Вернуться на главную

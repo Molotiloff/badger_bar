@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    link(rel="stylesheet" href="/stylesheets/login_style.css")
+    script(src="/javascripts/toast.js", defer)
+  body(data-errors=JSON.stringify(errors || []), data-success=success || '')
+
+    // Навигационная панель
+    nav.nav-bar
+      a.nav-button(href="/locations") Выбор места
+      div.nav-buttons-right
+        a.nav-button(href="/auth/register") Регистрация
+
+    // Контейнер для уведомлений
+    div.toast-container
+
+    // Контейнер формы авторизации
+    div.login-container
+      h2= title
+      form(action="/auth/login" method="POST")
+        input(type="hidden" name="_csrf" value=csrfToken)
+
+        label(for="user_mail") Электронная почта:
+        input(type="email" id="user_mail" name="user_mail" placeholder="example@mail.com" required)
+
+        label(for="user_password") Пароль:
+        input(type="password" id="user_password" name="user_password" placeholder="Введите пароль" required)
+
+        button(type="submit") Войти

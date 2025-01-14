@@ -1,0 +1,66 @@
+/* Общий стиль страницы */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Times New Roman', sans-serif;
+  color: white;
+  background: url('/images/blurred_badger.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Верхний бар */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Панель на всю ширину экрана */
+  display: flex;
+  justify-content: space-between; /* Распределяем кнопки по краям */
+  align-items: center; /* Выравниваем кнопки по вертикали */
+  padding: 20px 40px; /* Увеличиваем отступы для большей выразительности */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1.9), /* Тёмное начало */
+    rgba(0, 0, 0, 0.9), /* Среднее затемнение */
+    rgba(0, 0, 0, 0) /* Плавное исчезновение */
+  ); /* Добавляем градиент */
+  z-index: 1000; /* Поверх всех элементов */
+  box-sizing: border-box; /* Учитываем отступы в ширине */
+}
+
+.nav-button {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: #dfa431;
+  color: black;
+  transform: scale(1.1);
+}
+
+/* Список броней */
+.reservation-list {
+  list-style: none;
+  margin: 100px auto;
+  padding: 0;
+  max-width: 800px;
+}
+
+.reservation-list li {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: white;
+}

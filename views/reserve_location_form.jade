@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    link(rel="stylesheet" href="/stylesheets/reservation_style.css")
+    script(src="/javascripts/toast.js", defer)
+  body(data-errors=JSON.stringify(errors || []), data-success=success || '')
+
+    // Навигационная панель
+    nav.nav-bar
+      a.nav-button(href="/locations") Выбор места
+      div.nav-buttons-right
+        a.nav-button(href="/auth/register") Регистрация
+        a.nav-button(href="/auth/login") Вход
+
+    // Контейнер для уведомлений
+    div.toast-container
+
+    // Контейнер формы бронирования
+    div.reservation-container
+      h2= title
+      form(action="/reservations" method="POST")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input(type="hidden" name="location" value=location)
+
+        label(for="user_name") Ваше имя:
+        input(type="text" id="user_name" name="user_name" placeholder="Введите имя" required)
+
+        label(for="user_mail") Электронная почта:
+        input(type="email" id="user_mail" name="user_mail" placeholder="example@mail.com" required)
+
+        label(for="user_password") Пароль:
+        input(type="password" id="user_password" name="user_password" placeholder="Введите пароль" required)
+
+        label(for="reservation_date") Дата и время бронирования:
+        input(type="datetime-local" id="reservation_date" name="reservation_date" required)
+
+        label(for="number_of_guests") Количество гостей:
+        input(type="number" id="number_of_guests" name="number_of_guests" min="1" placeholder="1" required)
+
+        // Добавляем чекбокс для отправки email
+        div.checkbox-container
+          input(type="checkbox" id="send_email" name="send_email" checked)
+          label(for="send_email") Получить напоминание о бронировании по e-mail
+
+        button(type="submit") Забронировать

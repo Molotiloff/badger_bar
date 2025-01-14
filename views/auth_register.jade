@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    link(rel="stylesheet" href="/stylesheets/register_style.css")
+    script(src="/javascripts/toast.js", defer)
+  body(data-errors=JSON.stringify(errors || []), data-success=success || '')
+
+    // Кнопки навигации
+    nav.nav-bar
+      a.nav-button(href="/locations") Бронирование
+      a.nav-button(href="/auth/login") Войти
+
+    // Контейнер для уведомлений
+    div.toast-container
+
+    // Контейнер формы регистрации
+    div.registration-container
+      h2= title
+      form(action="/auth/register" method="POST")
+        input(type="hidden" name="_csrf" value=csrfToken)
+
+        label(for="user_name") Имя:
+        input(type="text" id="user_name" name="user_name" placeholder="Введите имя" required)
+
+        label(for="user_mail") Электронная почта:
+        input(type="email" id="user_mail" name="user_mail" placeholder="example@mail.com" required)
+
+        label(for="user_password") Пароль:
+        input(type="password" id="user_password" name="user_password" placeholder="Введите пароль" required)
+
+        button(type="submit") Зарегистрироваться
